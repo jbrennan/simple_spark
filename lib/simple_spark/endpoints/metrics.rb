@@ -13,7 +13,7 @@ module SimpleSpark
       # @return [Hash] containg a Metrics hash, the 'links' key will contain the links
       # @note See: https://developers.sparkpost.com/api/#/reference/metrics/metrics-discoverability-links
       def discoverability_links
-        @client.call(method: :get, path: 'metrics', extract_results: false)
+        @client.call(:method => :get, :path => 'metrics', :extract_results => false)
       end
 
       # Deliverability Metrics Summary
@@ -25,7 +25,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/#/reference/metrics/discoverability-links/deliverability-metrics-summary
       def deliverability_metrics_summary(values)
         format_date_time_values(values)
-        @client.call(method: :get, path: 'metrics/deliverability', query_values: values, extract_results: false)
+        @client.call(:method => :get, :path => 'metrics/deliverability', :query_values => values, :extract_results => false)
       end
 
       # Deliverability Metrics By Domain
@@ -37,7 +37,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/#/reference/metrics/deliverability-metrics/deliverability-metrics-by-domain
       def deliverability_metrics_by_domain(values)
         format_date_time_values(values)
-        @client.call(method: :get, path: 'metrics/deliverability/domain', query_values: values)
+        @client.call(:method => :get, :path => 'metrics/deliverability/domain', :query_values => values)
       end
 
       # Deliverability Metrics By Sending Domain
@@ -49,7 +49,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/#/reference/metrics/deliverability-metrics/deliverability-metrics-by-sending-domain
       def deliverability_metrics_by_sending_domain(values)
         format_date_time_values(values)
-        @client.call(method: :get, path: 'metrics/deliverability/sending-domain', query_values: values)
+        @client.call(:method => :get, :path => 'metrics/deliverability/sending-domain', :query_values => values)
       end
 
       # Deliverability Metrics By Campaign
@@ -61,7 +61,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/#/reference/metrics/deliverability-metrics/deliverability-metrics-by-campaign
       def deliverability_metrics_by_campaign(values)
         format_date_time_values(values)
-        @client.call(method: :get, path: 'metrics/deliverability/campaign', query_values: values)
+        @client.call(:method => :get, :path => 'metrics/deliverability/campaign', :query_values => values)
       end
 
       # Deliverability Metrics By Subaccount
@@ -73,7 +73,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/#/reference/metrics/deliverability-metrics/deliverability-metrics-by-subaccount
       def deliverability_metrics_by_subaccount(values)
         format_date_time_values(values)
-        @client.call(method: :get, path: 'metrics/deliverability/subaccount', query_values: values)
+        @client.call(:method => :get, :path => 'metrics/deliverability/subaccount', :query_values => values)
       end
 
       # Deliverability Metrics By Template
@@ -85,7 +85,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/#/reference/metrics/deliverability-metrics/deliverability-metrics-by-template
       def deliverability_metrics_by_template(values)
         format_date_time_values(values)
-        @client.call(method: :get, path: 'metrics/deliverability/template', query_values: values)
+        @client.call(:method => :get, :path => 'metrics/deliverability/template', :query_values => values)
       end
 
       # Time Series
@@ -97,7 +97,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/#/reference/metrics/time-series/time-series-metrics
       def deliverability_time_series(values)
         format_date_time_values(values)
-        @client.call(method: :get, path: 'metrics/deliverability/time-series', query_values: values)
+        @client.call(:method => :get, :path => 'metrics/deliverability/time-series', :query_values => values)
       end
 
       private

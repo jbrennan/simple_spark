@@ -17,14 +17,14 @@ module SimpleSpark
       # @return [Array] a list of sample Suppression Status hash objects
       # @note See: https://developers.sparkpost.com/api/suppression-list#suppression-list-search-get
       def search(params = {})
-        @client.call(method: :get, path: 'suppression-list', query_params: params)
+        @client.call(:method => :get, :path => 'suppression-list', :query_params => params)
       end
 
       # Insert or Update List Entries
       # @param recipients [Array] the entries to insert or update
       # @note See: https://developers.sparkpost.com/api/suppression-list#suppression-list-bulk-insert-update-put
       def create_or_update(recipients)
-        @client.call(method: :put, path: 'suppression-list', body_values: {recipients: recipients})
+        @client.call(:method => :put, :path => 'suppression-list', :body_values => {:recipients => recipients})
       end
 
       # Retrieve a Recipient Suppression Status
@@ -33,7 +33,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/suppression-list#suppression-list-retrieve,-delete-get
       def retrieve(recipient_email)
         recipient_email = @client.url_encode(recipient_email)
-        @client.call(method: :get, path: "suppression-list/#{recipient_email}")
+        @client.call(:method => :get, :path => "suppression-list/#{recipient_email}")
       end
 
       # Delete a List Entry
@@ -41,7 +41,7 @@ module SimpleSpark
       # @note See: https://developers.sparkpost.com/api/suppression-list#suppression-list-retrieve,-delete-delete
       def delete(recipient_email)
         recipient_email = @client.url_encode(recipient_email)
-        @client.call(method: :delete, path: "suppression-list/#{recipient_email}")
+        @client.call(:method => :delete, :path => "suppression-list/#{recipient_email}")
       end
     end
   end

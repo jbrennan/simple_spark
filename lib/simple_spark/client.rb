@@ -26,7 +26,7 @@ module SimpleSpark
       @debug = opts[:debug].nil? ? rails_development : opts[:debug]
 
       # switch debug params, allow for old and new parameters and supress Excon warning
-      debug_options = Excon::VALID_REQUEST_KEYS.any? { |k| k == :debug } ? { debug: @debug } : { debug_request: @debug, debug_response: @debug }
+      debug_options = Excon::VALID_REQUEST_KEYS.any? { |k| k == :debug } ? { :debug => @debug } : { :debug_request => @debug, :debug_response => @debug }
 
       @session = Excon.new(@api_host, debug_options)
     end
@@ -38,10 +38,10 @@ module SimpleSpark
       query_params = opts[:query_values] || {}
       extract_results = opts[:extract_results].nil? ? true : opts[:extract_results]
 
-      fail Exceptions::InvalidConfiguration.new(method: method), 'Only GET, POST, PUT and DELETE are supported' unless [:get, :post, :put, :delete].include?(method)
+      fail Exceptions::InvalidConfiguration.new(:method => method), 'Only GET, POST, PUT and DELETE are supported' unless [:get, :post, :put, :delete].include?(method)
 
       path = "#{@base_path}#{path}"
-      params = { path: path, headers: headers }
+      params = { :path => path, :headers => headers }
       params[:body] = JSON.generate(body_values) unless body_values.empty?
       params[:query] = query_params unless query_params.empty?
 
